@@ -1,1 +1,20 @@
-["serpil_ozcelik","bozkurt.hazarr","bozkurt.hazarr","bozkurt.hazarr","aqeht"]
+["serpil_ozcelik","tahamintati","nvturos","bozkurt.hazarr","aqeht"]
+
+if($result1 == false)
+ $response['msg'] = "Transfer failed due to a technical problem. Sorry.";
+else
+ $response['msg'] = "Successfully transferred";
+echo json_encode($response);
+
+$("#transfer").click(function() {
+ $.ajax({
+ type : "POST",
+ url : "transferProduct.php",
+ data : {},
+ success : function(data) {                     
+   data = $.parseJSON(data);
+   alert(data.response);    
+   location.reload();         
+  }
+ });
+});
